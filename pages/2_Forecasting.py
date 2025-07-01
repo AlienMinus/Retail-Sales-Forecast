@@ -125,13 +125,13 @@ if st.checkbox("Show SHAP Summary Plot (may take time for large datasets)"):
 
         # Matplotlib plots are rendered better with a figure object
         fig_shap_bar, ax_shap_bar = plt.subplots(figsize=(10, 7))
-        shap.summary_plot(shap_values, X_shap_sample, plot_type="bar", show=False, ax=ax_shap_bar)
+        shap.summary_plot(shap_values, X_shap_sample, plot_type="bar", show=False)
         ax_shap_bar.set_title("SHAP Feature Importance (Overall Impact)")
         st.pyplot(fig_shap_bar, bbox_inches='tight')
         plt.close(fig_shap_bar) # Close the figure to free up memory
 
         fig_beeswarm, ax_beeswarm = plt.subplots(figsize=(12, 8))
-        shap.summary_plot(shap_values, X_shap_sample, show=False, ax=ax_beeswarm)
+        shap.summary_plot(shap_values, X_shap_sample, show=False)
         ax_beeswarm.set_title("SHAP Feature Contributions (Beeswarm Plot)")
         st.pyplot(fig_beeswarm, bbox_inches='tight')
         plt.close(fig_beeswarm) # Close the figure to free up memory
@@ -178,6 +178,14 @@ else:
     # Ensure season_encoder can transform future seasons
     # (assuming season_encoder is already globally fitted on all known seasons from main app)
     # If a new season arises that wasn't in original data, this might fail unless encoder is updated
+    # ...existing code...
+
+    # Ensure season_encoder is fitted before using
+    if not hasattr(season_encoder, 'classes_'):
+        # Fit on all possible seasons in your data
+        all_seasons = pd.Series(['Winter', 'Spring', 'Summer', 'Fall'])
+        season_encoder.fit(all_seasons)
+
     future_date_data['Season_Encoded'] = season_encoder.transform(future_date_data['Season'])
 
     # Replicate the specific store/dept/type/size info for all future dates
@@ -220,7 +228,7 @@ else:
     forecast_with_tail = forecast_with_tail.drop_duplicates(subset=['Date'], keep='first') # Keep first to prefer historical
 
     fig_future.add_trace(go.Scatter(x=forecast_with_tail['Date'], y=forecast_with_tail['Weekly_Sales_Predicted'],
-                                     name='Future Forecast', mode='lines', line=dict(color='red', dash='dash')))
+                                     name='Future Forecast', mode='lines', line=dict(color='red')))
 
     fig_future.update_layout(title=f"Future Sales Forecast for Store {forecast_store}, Dept {forecast_dept}",
                               xaxis_title='Date', yaxis_title='Forecasted Sales')
