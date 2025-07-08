@@ -42,17 +42,17 @@ It’s a **multi-page Streamlit app** with powerful backend integration for data
 
 ## 📁 Architecture
 
-Retail-Sales-Forecasting/
-├── app.py # Main launcher (Streamlit entry point)
-├── dataset/
-│ └── dataset.csv # Historical retail sales data
-├── pages/
-│ ├── 1_Dashboard.py # Sales analysis & KPIs
-│ ├── 2_Forecasting.py # Model evaluation & forecasting
-│ └── 3_Retrain_Model.py # Upload new data & retrain model
-├── model/
-│ └── xgboost_model.pkl # Serialized trained model
-└── README.md
+Retail-Sales-Forecasting/  
+├── app.py # Main launcher (Streamlit entry point)  
+├── dataset/  
+│ └── dataset.csv # Historical retail sales data  
+├── pages/  
+│ ├── 1_Dashboard.py # Sales analysis & KPIs  
+│ ├── 2_Forecasting.py # Model evaluation & forecasting  
+│ └── 3_Retrain_Model.py # Upload new data & retrain model  
+├── model/  
+│ └── xgboost_model.pkl # Serialized trained model  
+└── README.md  
 
 ---
 
@@ -85,7 +85,7 @@ Retail-Sales-Forecasting/
 
 1. **Clone this repo:**
    ```bash
-   git clone https://github.com/<your-username>/Retail-Sales-Forecasting.git
+   git clone https://github.com/AlienMinus/Retail-Sales-Forecasting.git
    cd Retail-Sales-Forecasting
    ```
 2. **Create a virtual environment and activate it:**
@@ -131,5 +131,5 @@ MIT License. See LICENSE file for more details.
 - By Manas R. Das
 - 📧 dasmanasranjan2005@gmail.com
 
-> "Our greatest glory is not in never failing, but in rising every time we fail." — Confucius
+> *"Our greatest glory is not in never failing, but in rising every time we fail."* — Confucius
 
