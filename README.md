@@ -89,18 +89,19 @@ Retail-Sales-Forecasting/
    cd Retail-Sales-Forecasting
    ```
 2. **Create a virtual environment and activate it:**
-  ```bash
-  python -m venv venv
-  source venv/bin/activate  # On Windows: venv\Scripts\activate
-  ```
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 3. **Install required dependencies:**
-  ```bash
-  pip install -r requirements.txt
-  ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 4. **Launch the Streamlit app:**
-  ```bash
-  streamlit run app.py
-  ```
+   ```bash
+   streamlit run app.py
+   ```
+   
 ## 📈 Sample Dataset
 The dataset contains:
 - Date, Store, Dept, Weekly_Sales, Temperature, Fuel_Price
